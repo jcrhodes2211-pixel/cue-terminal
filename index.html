@@ -3,136 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decipher Cue - Stable System Framework Blueprint</title>
+    <title>Decipher Cue - Core Command Platform</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-        body { background: #f1f5f9; color: #1e293b; min-height: 100vh; overflow-y: scroll; padding-bottom: 60px; }
-        #master-status-banner { background: #10b981; color: white; text-align: center; padding: 14px; font-weight: bold; font-size: 1rem; position: sticky; top: 0; z-index: 9999; }
-        .main-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; }
-        .panel-wrapper { background: white; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
-        .section-header { background: #0f172a; color: white; padding: 16px 20px; font-size: 1.25rem; font-weight: bold; }
-        .section-body { padding: 25px; display: flex; flex-direction: column; gap: 20px; }
-        .card { background: #f8fafc; padding: 20px; border-radius: 6px; border: 1px solid #e2e8f0; width: 100%; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-        .form-group { display: flex; flex-direction: column; gap: 6px; width: 100%; }
-        .form-control { padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; color: #334155; background: white; }
-        .ext-box { background: #f8fafc; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; }
-        .ext-group-title { font-weight: bold; font-size: 0.95rem; color: #0f172a; margin-bottom: 8px; display: block; border-bottom: 2px solid #e2e8f0; padding-bottom: 4px; }
-        .ext-list { font-size: 0.85rem; color: #475569; font-family: monospace; line-height: 1.6; }
-        .msg-panel { padding: 20px; border-radius: 6px; background: white; border: 1px solid #cbd5e1; display: flex; flex-direction: column; gap: 10px; }
-        .msg-bubble { padding: 10px 14px; border-radius: 8px; max-width: 80%; font-size: 0.9rem; }
-        .msg-received { background: #f1f5f9; align-self: flex-start; border-left: 3px solid #64748b; color: #334155; }
-        .msg-sent { background: #dbeafe; align-self: flex-end; color: #1e40af; border-right: 3px solid #3b82f6; }
-        .schedule-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 15px; }
-        .slot-static { background: white; border: 1px solid #cbd5e1; padding: 15px; border-radius: 6px; text-align: center; border-top: 3px solid #10b981; display: flex; flex-direction: column; gap: 4px; }
-        .voip-status-badge { background: #334155; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #475569; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: white; }
-        .voip-dot { width: 12px; height: 12px; background: #10b981; border-radius: 50%; display: inline-block; }
-        .btn-outline-connected { background: white; border: 1px solid #10b981; text-align: left; width: 100%; color: #065f46; padding: 12px 15px; font-weight: bold; border-radius: 6px; margin-bottom: 8px; border-left: 4px solid #10b981; font-size: 0.9rem; }
-        .alert-box { padding: 15px; background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; border-radius: 6px; font-weight: bold; width: 100%; }
-        .content-link-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; border-top: 4px solid #2563eb; }
-        .kids-corner-banner { background: #fffbeb; border-left: 5px solid #f59e0b; padding: 20px; border-radius: 6px; width: 100%; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
+        body { background: #f0f2f5; color: #1f2937; min-height: 100vh; display: flex; flex-direction: column; }
+        #master-banner { background: #10b981; color: white; text-align: center; padding: 14px; font-weight: bold; }
+        .main-container { max-width: 800px; margin: auto; padding: 40px 20px; text-align: center; display: flex; flex-direction: column; gap: 24px; align-items: center; }
+        .platform-card { background: white; padding: 40px; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); width: 100%; }
+        h1 { color: #0f172a; margin-bottom: 12px; font-size: 2rem; }
+        p { color: #64748b; margin-bottom: 30px; font-size: 1.05rem; line-height: 1.6; }
+        .launch-btn { background: #2563eb; color: white; padding: 16px 32px; border-radius: 8px; font-weight: bold; font-size: 1.1rem; text-decoration: none; display: inline-block; box-shadow: 0 4px 6px rgba(37,99,235,0.2); transition: background 0.2s; }
+        .launch-btn:hover { background: #1d4ed8; }
+        .spec-badge { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 12px; border-radius: 6px; font-size: 0.85rem; color: #475569; width: 100%; text-align: left; }
     </style>
 </head>
 <body>
-    <div id="master-status-banner">DECIPHER CUE PLATFORM WIREFRAME: Standard Storage Matrix Verification Engine Active</div>
+    <div id="master-banner">DECIPHER CUE MASTER NETWORK: Cloud Gateway Online</div>
     <div class="main-container">
-
-        <!-- MODULE 1: USER PROFILE HUB -->
-        <div class="panel-wrapper">
-            <div class="section-header">1. User Profile Hub & Interconnected Course Content Links</div>
-            <div class="section-body">
-                <div class="grid-3">
-                    <div class="card" style="text-align: center; background: white; border-top: 4px solid #0f172a;">
-                        <div style="font-size: 3rem;">👤</div>
-                        <strong>Instructor Profile Node</strong>
-                        <p style="font-size: 0.85rem; color: #64748b;">ID Instance: Admin_Node_Alpha_01</p>
-                        <div style="margin-top: 15px; background: #eff6ff; color: #2563eb; padding: 6px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">Level: System Administrator</div>
-                    </div>
-                    <div class="content-link-card">
-                        <div>
-                            <strong style="color: #2563eb;">Track 1</strong>
-                            <h4 style="margin-top:4px; font-weight: bold;">NIST NICE Security Mappings</h4>
-                            <p style="font-size: 0.85rem; color: #64748b; margin-top:5px;">Syllabus data loops checking firewall security parameters matching U.S. federal benchmarks.</p>
-                        </div>
-                        <div style="margin-top: 15px; background: #e0f2fe; color: #0369a1; padding: 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; text-align: center;">Connected to Classroom Window</div>
-                    </div>
-                    <div class="content-link-card">
-                        <div>
-                            <strong style="color: #2563eb;">Track 2</strong>
-                            <h4 style="margin-top:4px; font-weight: bold;">FAA Part 147 Airframe Blueprints</h4>
-                            <p style="font-size: 0.85rem; color: #64748b; margin-top:5px;">Aviation engine schematics, mechanical instruction logs, and structural thermodynamic hour matrices.</p>
-                        </div>
-                        <div style="margin-top: 15px; background: #e0f2fe; color: #0369a1; padding: 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; text-align: center;">Connected to Classroom Window</div>
-                    </div>
-                </div>
-            </div>
+        <div class="platform-card">
+            <h1>Decipher Cue Dashboard Gateway</h1>
+            <p>Welcome to the operational master workspace terminal. Due to your secure network architecture profile, all platform operations cards have been compiled into a secure sub-directory matrix file to prevent local browser blocking.</p>
+            <a href="dashboard.html" class="launch-btn">🚀 Open System Operations Matrix</a>
         </div>
-
-        <!-- MODULE 2: SECURE FILE CABINET HUB (SAFE BYPASS REWRITE) -->
-        <div class="panel-wrapper">
-            <div class="section-header">2. Secure Multi-Tenant Local File Cabinet Module</div>
-            <div class="section-body">
-                <p style="color: #6b7280; font-size: 0.95rem;">System repository index verified for documents, audio, video, packages, and database layers across all **25 requested formatting rules**:</p>
-                
-                <div class="grid-4">
-                    <div class="ext-box">
-                        <span class="ext-group-title">🗂️ Documents & Text</span>
-                        <div class="ext-list">
-                            • PDF Document File<br>
-                            • TXT Text Note<br>
-                            • DOC Office Note<br>
-                            • DOCX System Notes<br>
-                            • PPTX Slide Presentation
-                        </div>
-                    </div>
-                    <div class="ext-box">
-                        <span class="ext-group-title">📊 Spreadsheets & Data</span>
-                        <div class="ext-list">
-                            • XLSX Ledger Sheets<br>
-                            • SQL Registry Query<br>
-                            • ACCDB Database File<br>
-                            • SQLITE Isolated Cache
-                        </div>
-                    </div>
-                    <div class="ext-box">
-                        <span class="ext-group-title">🖼️ Media & Graphic Vector</span>
-                        <div class="ext-list">
-                            • JPEG Canvas Image<br>
-                            • PNG UI Capture<br>
-                            • GIF Kinder Shapes<br>
-                            • SVG Blueprint Vector
-                        </div>
-                    </div>
-                    <div class="ext-box">
-                        <span class="ext-group-title">🔊 Audio Track Streams</span>
-                        <div class="ext-list">
-                            • MP3 Classroom Audio<br>
-                            • WAV VoIP Microphone<br>
-                            • FLAC High Fidelity Feed
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid-3" style="margin-top: 5px;">
-                    <div class="ext-box">
-                        <span class="ext-group-title">🎬 Video Presentations</span>
-                        <div class="ext-list">
-                            • MP4 Lecture Capture<br>
-                            • MOV Rivet Video Track<br>
-                            • AVI Infiltration Record
-                        </div>
-                    </div>
-                    <div class="ext-box">
-                        <span class="ext-group-title">📦 Compressed Packages</span>
-                        <div class="ext-list">
-                            • ZIP Blueprint Backup<br>
-                            • RAR Historical Archive
-                        </div>
-                    </div>
-                    <div class="ext-box">
-                        <span class="ext-group-title">⚙️ Code & Core Extension System</span>
-                        <div class="ext-list">
-                            • C Packet Sniffer Logic<br>
-                            • HTML Multi Tenant View<br>
+        <div class="spec-badge">
+            <strong>Active Tenant Environment:</strong> Admin_Node_Alpha_01 • <strong>Security Clearance:</strong> Administrator (TLS 1.3 Baseline)
+        </div>
+    </div>
+</body>
+</html>
