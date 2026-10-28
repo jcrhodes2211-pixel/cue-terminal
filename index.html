@@ -3,31 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decipher Cue - Core Command Platform</title>
+    <title>Decipher Cue - Operations Terminal</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
-        body { background: #f0f2f5; color: #1f2937; min-height: 100vh; display: flex; flex-direction: column; }
-        #master-banner { background: #10b981; color: white; text-align: center; padding: 14px; font-weight: bold; }
-        .main-container { max-width: 800px; margin: auto; padding: 40px 20px; text-align: center; display: flex; flex-direction: column; gap: 24px; align-items: center; }
-        .platform-card { background: white; padding: 40px; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); width: 100%; }
-        h1 { color: #0f172a; margin-bottom: 12px; font-size: 2rem; }
-        p { color: #64748b; margin-bottom: 30px; font-size: 1.05rem; line-height: 1.6; }
-        .launch-btn { background: #2563eb; color: white; padding: 16px 32px; border-radius: 8px; font-weight: bold; font-size: 1.1rem; text-decoration: none; display: inline-block; box-shadow: 0 4px 6px rgba(37,99,235,0.2); transition: background 0.2s; }
-        .launch-btn:hover { background: #1d4ed8; }
-        .spec-badge { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 12px; border-radius: 6px; font-size: 0.85rem; color: #475569; width: 100%; text-align: left; }
+        body { background: #f1f5f9; color: #1e293b; min-height: 100vh; overflow-y: scroll; padding: 40px 20px; }
+        .main-container { max-width: 1000px; margin: auto; display: flex; flex-direction: column; gap: 35px; }
+        .panel-wrapper { background: white; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
+        .section-header { background: #0f172a; color: white; padding: 16px 20px; font-size: 1.15rem; font-weight: bold; }
+        .section-body { padding: 25px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #f8fafc; padding: 15px; border-radius: 6px; border: 1px solid #e2e8f0; font-size: 0.9rem; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
+        .form-group { display: flex; flex-direction: column; gap: 4px; width: 100%; font-size: 0.85rem; font-weight: bold; }
+        .form-control { padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; background: white; }
+        .msg-panel { padding: 15px; border-radius: 6px; background: white; border: 1px solid #cbd5e1; display: flex; flex-direction: column; gap: 8px; }
+        .msg-bubble { padding: 8px 12px; border-radius: 8px; max-width: 85%; font-size: 0.88rem; }
+        .msg-received { background: #f1f5f9; align-self: flex-start; border-left: 3px solid #64748b; }
+        .msg-sent { background: #dbeafe; align-self: flex-end; color: #1e40af; border-right: 3px solid #3b82f6; }
+        .schedule-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+        .slot-static { background: white; border: 1px solid #cbd5e1; padding: 12px; border-radius: 6px; text-align: center; border-top: 3px solid #10b981; display: flex; flex-direction: column; gap: 2px; font-size: 0.85rem; }
+        .back-link { color: #2563eb; text-decoration: none; font-weight: bold; font-size: 0.95rem; margin-bottom: 10px; display: inline-block; }
     </style>
 </head>
 <body>
-    <div id="master-banner">DECIPHER CUE MASTER NETWORK: Cloud Gateway Online</div>
     <div class="main-container">
-        <div class="platform-card">
-            <h1>Decipher Cue Dashboard Gateway</h1>
-            <p>Welcome to the operational master workspace terminal. Due to your secure network architecture profile, all platform operations cards have been compiled into a secure sub-directory matrix file to prevent local browser blocking.</p>
-            <a href="dashboard.html" class="launch-btn">🚀 Open System Operations Matrix</a>
+        <a href="index.html" class="back-link">⬅ Return to Main Command Gateway</a>
+
+        <!-- 3. EDUCATION CORNER -->
+        <div class="panel-wrapper">
+            <div class="section-header">3. Education Corner: Audio-Visual Classroom Center & Screen Share</div>
+            <div class="section-body">
+                <div class="grid-2">
+                    <div class="card" style="background: #1e293b; color: white; text-align: center; padding: 25px;">
+                        <span style="font-size: 0.75rem; background: #ef4444; padding: 3px 6px; border-radius: 4px; font-weight: bold;">● SCREEN SHARE ACTIVE</span>
+                        <div style="font-size: 2rem; margin: 8px 0;">🖥️</div>
+                        <strong>Presentation Surface Layer</strong>
+                        <p style="color: #94a3b8; font-size: 0.8rem; margin-top: 4px;">Currently streaming technical class textbooks from your local storage vault layers.</p>
+                    </div>
+                    <div class="card" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; text-align: center;">
+                        <div style="font-size: 1.8rem;">👨‍🏫</div>
+                        <strong>Instructor Audio Comms Link</strong>
+                        <span style="color: #10b981; font-weight: bold; font-size: 0.85rem;">🟢 High-Fidelity Audio Linked</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <strong>Whiteboard Drawing Board Panel (Module 19)</strong>
+                    <div style="border: 2px dashed #cbd5e1; height: 90px; margin-top: 8px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #6b7280; font-weight: bold; font-size: 0.85rem; background: white;">WYSIWYG Drawing Canvas Workspace Surface</div>
+                </div>
+            </div>
         </div>
-        <div class="spec-badge">
-            <strong>Active Tenant Environment:</strong> Admin_Node_Alpha_01 • <strong>Security Clearance:</strong> Administrator (TLS 1.3 Baseline)
+
+        <!-- 4. CHAT PANELS -->
+        <div class="panel-wrapper">
+            <div class="section-header">4. Secure Messaging Multi-Channel Infrastructure Layout</div>
+            <div class="section-body">
+                <div class="grid-2">
+                    <div>
+                        <h5 style="margin-bottom: 6px; font-weight: bold;">Option A: Public Classroom Chat</h5>
+                        <div class="msg-panel">
+                            <span style="font-size: 0.7rem; color:#2563eb; font-weight:bold; font-family:monospace;">🔒 TLS 1.3 Channel Active</span>
+                            <div class="msg-bubble msg-received"><strong>Student_02:</strong> Quick question on the HVAC thermodynamics loading formula graph.</div>
+                            <div class="msg-bubble msg-sent"><strong>Instructor:</strong> Trace the boundary vector values using your board.</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 style="margin-bottom: 6px; font-weight: bold;">Option B: Private Message Tunnels & Secure Email</h5>
+                        <div class="msg-panel">
+                            <span style="font-size: 0.7rem; color:#059669; font-weight:bold; font-family:monospace;">🛡️ Cryptographic E2EE Tunnel Engaged</span>
+                            <div class="msg-bubble msg-received"><strong>Parent_Spectator:</strong> Are attendance student metrics saving into logs?</div>
+                            <div class="msg-bubble msg-sent"><strong>Instructor:</strong> Yes, tracked instantly across storage blocks.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- 6. ONLINE BOOKING -->
+        <div class="panel-wrapper">
+            <div class="section-header">5. Custom Online Booking & Appointment Scheduling Engine (Module 4.1.2)</div>
+            <div class="section-body">
+                <div class="grid-3">
+                    <div class="form-group">
+                        <label>Target Date & Time Selector</label>
+                        <input type="datetime-local" class="form-control" value="2026-11-02T09:00">
+                    </div>
+                    <div class="form-group">
+                        <label>Appointment Category Context</label>
+                        <select class="form-control"><option>Live Stream Lecture Session</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tenant Room Isolation</label>
+                        <select class="form-control"><option>Classroom Node Alpha</option></select>
+                    </div>
+                </div>
+                <div class="schedule-grid">
+                    <div class="slot-static"><strong>09:00 AM</strong><span style="font-size:0.7rem; color:#2563eb; font-weight:bold;">Selected Slot</span></div>
+                    <div class="slot-static" style="border-top-color:#cbd5e1;"><strong>11:30 AM</strong><span style="font-size:0.7rem; color:#64748b;">Available Block</span></div>
+                    <div class="slot-static" style="border-top-color:#cbd5e1;"><strong>02:15 PM</strong><span style="font-size:0.7rem; color:#64748b;">Premium Track</span></div>
+                    <div class="slot-static" style="border-top-color:#cbd5e1;"><strong>04:45 PM</strong><span style="font-size:0.7rem; color:#64748b;">Available Block</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. STANDALONE KIDS MODULE -->
+        <div class="panel-wrapper" style="margin-bottom: 20px;">
+            <div class="section-header" style="border-left: 4px solid #f59e0b;">6. ⭐ Standalone Kids Corner Security Module</div>
+            <div class="section-body">
+                <div style="background: #fffbeb; border-left: 5px solid #f59e0b; padding: 15px; border-radius: 6px; font-size: 0.88rem;">
+                    <strong>Isolated Child-Safe Container Schema Shell (Module 3.2.4)</strong><br>
+                    <span style="color: #b45309; display: block; margin-top: 3px;">System indexing rules automatically isolate minor user profiles from technical database files.</span>
+                </div>
+                <div class="card" style="background: white; border-top: 3px solid #10b981;">
+                    <span style="background: #10b981; color: white; font-size: 0.7rem; padding: 2px 5px; border-radius: 4px; font-weight: bold;">Kids Safe Checked</span>
+                    <h4 style="margin-top: 6px; font-weight: bold;">Primary Numerical Foundations & Geometry</h4>
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>
