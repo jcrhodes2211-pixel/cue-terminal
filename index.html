@@ -3,92 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decipher Cue - Stable System Framework Blueprint</title>
+    <title>Decipher Cue - Operational Master Dashboard</title>
     <style>
-        /* Pure Static CSS Layout Core - 100% Valid Bracket Syntax Safe From Ingestion Blocks */
+        /* Ironclad Local CSS Framework Layout Core - Fluid Flex Top Menu Configuration */
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-        body { background: #f1f5f9; color: #1e293b; min-height: 100vh; overflow-y: scroll; padding-bottom: 60px; }
-        #master-status-banner { background: #10b981; color: white; text-align: center; padding: 14px; font-weight: bold; font-size: 1rem; position: sticky; top: 0; z-index: 9999; }
-        .main-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; }
-        .panel-wrapper { background: white; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
-        .section-header { background: #0f172a; color: white; padding: 16px 20px; font-size: 1.25rem; font-weight: bold; }
-        .section-body { padding: 25px; display: flex; flex-direction: column; gap: 20px; }
-        .card { background: #f8fafc; padding: 20px; border-radius: 6px; border: 1px solid #e2e8f0; width: 100%; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
-        .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-        .form-group { display: flex; flex-direction: column; gap: 6px; width: 100%; }
-        .form-control { padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; color: #334155; background: white; }
-        .ext-box { background: #f8fafc; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; text-align: center; }
-        .ext-badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-family: monospace; font-weight: bold; text-transform: uppercase; color: white; background: #2563eb; margin-bottom: 4px; }
-        .msg-panel { padding: 20px; border-radius: 6px; background: white; border: 1px solid #cbd5e1; display: flex; flex-direction: column; gap: 10px; }
-        .msg-bubble { padding: 10px 14px; border-radius: 8px; max-width: 80%; font-size: 0.9rem; }
-        .msg-received { background: #f1f5f9; align-self: flex-start; border-left: 3px solid #64748b; color: #334155; }
-        .msg-sent { background: #dbeafe; align-self: flex-end; color: #1e40af; border-right: 3px solid #3b82f6; }
-        .schedule-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 15px; }
-        .slot-static { background: white; border: 1px solid #cbd5e1; padding: 15px; border-radius: 6px; text-align: center; border-top: 3px solid #10b981; display: flex; flex-direction: column; gap: 4px; }
+        body { display: flex; flex-direction: column; background: #f1f5f9; color: #0f172a; height: 100vh; overflow: hidden; }
+        
+        #master-status-banner { background: #10b981; color: #ffffff; text-align: center; padding: 12px; font-weight: bold; font-size: 0.95rem; z-index: 9999; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        
+        /* Top Horizontal Multi-Row Flex Navigation Bar - Guarantees 100% button visibility on any screen size */
+        .top-nav-bar { display: flex; flex-wrap: wrap; background: #0f172a; padding: 12px; gap: 8px; border-bottom: 2px solid #1e293b; align-items: center; z-index: 999; overflow-x: auto; }
+        .sidebar-title { color: #ffffff; font-size: 1.15rem; font-weight: bold; padding: 0 15px; margin-right: 5px; }
+        
+        .tab-btn { padding: 10px 16px; border-radius: 6px; cursor: pointer; transition: all 0.2s; border: none; background: transparent; color: #94a3b8; font-size: 0.9rem; font-weight: 500; display: inline-block; white-space: nowrap; }
+        .tab-btn:hover { background: #1e293b; color: #f8fafc; }
+        .tab-btn.active { background: #2563eb; color: #ffffff; font-weight: bold; box-shadow: 0 2px 4px rgba(37,99,235,0.15); }
+        
+        /* Main Workspace Display Viewport with scroll parameters verified */
+        .main-viewport { flex: 1; padding: 30px; overflow-y: auto; background: #f8fafc; width: 100%; height: calc(100vh - 100px); }
+        .tab-panel { display: none; flex-direction: column; gap: 24px; width: 100%; }
+        .tab-panel.active { display: flex; }
+        
+        /* Layout Grid System Matrices */
+        .card { background: #ffffff; padding: 24px; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.02); margin-bottom: 5px; width: 100%; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; width: 100%; }
+        
+        /* Input & Form Configurations */
+        .form-group { margin-bottom: 15px; display: flex; flex-direction: column; gap: 6px; width: 100%; }
+        .form-control { padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; width: 100%; background: #ffffff; color: #334155; }
+        .btn { padding: 12px 20px; border: none; border-radius: 6px; font-weight: bold; font-size: 0.95rem; display: inline-block; background: #2563eb; color: white; text-align: center; cursor: pointer; text-decoration: none; }
+        .btn-sm { padding: 6px 12px; font-size: 0.8rem; width: auto; }
+        .btn-success { background: #10b981; } .btn-dark { background: #1f2937; }
+        
+        /* EDUCATION CORNER LAYOUT CORE */
+        .recorder-control-bar { background: #111827; padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #1e293b; width: 100%; color: white; }
+        .recording-status-ticker { color: #ef4444; font-weight: bold; animation: beacon-pulse 1.5s infinite; font-family: monospace; font-size: 0.9rem; }
+        
+        .classroom-video-hub { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; width: 100%; }
+        .live-stream-theater { background: #1e293b; border-radius: 8px; padding: 25px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 2px solid #3b82f6; min-height: 240px; color: white; position: relative; text-align: center; }
+        .live-broadcast-tag { position: absolute; top: 12px; left: 12px; background: #ef4444; color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+        
         .voip-status-badge { background: #334155; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #475569; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: white; }
-        .voip-dot { width: 12px; height: 12px; background: #10b981; border-radius: 50%; display: inline-block; }
-        .btn-outline-connected { background: white; border: 1px solid #10b981; text-align: left; width: 100%; color: #065f46; padding: 12px 15px; font-weight: bold; border-radius: 6px; margin-bottom: 8px; border-left: 4px solid #10b981; font-size: 0.9rem; }
-        .alert-box { padding: 15px; background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; border-radius: 6px; font-weight: bold; width: 100%; }
-        .content-link-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; border-top: 4px solid #2563eb; }
+        .voip-dot { width: 12px; height: 12px; background: #10b981; border-radius: 50%; display: inline-block; animation: beacon-pulse 1.5s infinite; }
+        
+        .board-canvas-surface { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px; width: 100%; display: flex; flex-direction: column; gap: 10px; }
+        .canvas-toolbar { display: flex; justify-content: space-between; align-items: center; background: #334155; padding: 10px; border-radius: 6px; color: white; }
+        .canvas-interactive-sandbox { background: #ffffff; border: 2px dashed #94a3b8; height: 140px; border-radius: 6px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; color: #4b5563; font-weight: bold; }
+        .log-box-stream { background: #000000; color: #10b981; font-family: monospace; padding: 15px; border-radius: 8px; height: 100px; overflow-y: auto; font-size: 0.85rem; width: 100%; margin-top: 15px; border: 1px solid #1e293b; }
+        
+        /* CHAT SUB PANELS LAYOUTS */
+        .messaging-tab-container { border: 1px solid #cbd5e1; border-radius: 8px; background: #ffffff; overflow: hidden; width: 100%; }
+        .msg-tab-headers { display: flex; background: #eaeef2; border-bottom: 1px solid #cbd5e1; }
+        .chat-sub-btn { flex: 1; padding: 12px; font-weight: bold; text-align: center; cursor: pointer; border: none; background: #eaeef2; color: #475569; transition: all 0.2s; }
+        .chat-sub-btn.active { background: #ffffff; color: #2563eb; border-bottom: 2px solid #2563eb; }
+        .msg-display-panel { display: none; padding: 20px; height: 160px; overflow-y: auto; background: #fdfefe; flex-direction: column; gap: 10px; border-bottom: 1px solid #cbd5e1; width: 100%; }
+        .msg-display-panel.active { display: flex; }
+        
+        .msg-bubble { padding: 10px 14px; border-radius: 8px; max-width: 80%; font-size: 0.9rem; line-height: 1.4; }
+        .msg-received { background: #f1f5f9; align-self: flex-start; color: #334155; border-left: 3px solid #64748b; }
+        .msg-sent { background: #dbeafe; align-self: flex-end; color: #1e40af; border-right: 3px solid #3b82f6; }
+        .encryption-notice { font-size: 0.75rem; color: #059669; font-weight: bold; font-family: monospace; }
+        .msg-attachment { display: flex; align-items: center; gap: 8px; margin-top: 6px; padding: 6px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.8rem; font-weight: bold; color: #334155; }
+        
+        /* FILE CABINET TABLE MATRIX */
+        .cabinet-table { width: 100%; border-collapse: collapse; text-align: left; }
+        .cabinet-table th, .cabinet-table td { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; font-size: 0.85rem; }
+        .cabinet-table th { background: #f1f5f9; font-weight: bold; color: #334155; }
+        .ext-badge { display: inline-block; padding: 2px 5px; border-radius: 4px; font-size: 0.7rem; font-family: monospace; font-weight: bold; text-transform: uppercase; color: white; }
+        .bg-doc { background: #2563eb; } .bg-img { background: #ec4899; } .bg-audio { background: #eab308; } .bg-video { background: #8b5cf6; } .bg-code { background: #10b981; } .bg-sys { background: #ef4444; } .bg-db { background: #06b6d4; } .bg-zip { background: #64748b; }
+        
+        /* CALENDAR SCHEDULING MODULE */
+        .schedule-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 15px; }
+        .slot-btn-mock { background: #ffffff; border: 1px solid #cbd5e1; padding: 15px; border-radius: 6px; text-align: center; cursor: pointer; display: flex; flex-direction: column; gap: 4px; }
+        .slot-btn-mock:hover, .slot-btn-mock.active { background: #eff6ff; border-color: #2563eb; color: #2563eb; box-shadow: 0 0 0 1px #2563eb; }
+        
+        /* GENERAL NOTICES */
         .kids-corner-banner { background: #fffbeb; border-left: 5px solid #f59e0b; padding: 20px; border-radius: 6px; width: 100%; }
+        .badge { display: inline-block; padding: 4px 8px; background: #1f2937; color: white; border-radius: 4px; font-size: 0.75rem; font-family: monospace; font-weight: bold; text-transform: uppercase; }
+        .badge-kids { background: #10b981; } .badge-tbs { background: #dc2626; }
+        .btn-outline-connected { background: #ffffff; border: 1px solid #10b981; text-align: left; width: 100%; color: #065f46; padding: 12px 15px; font-weight: bold; border-radius: 6px; margin-bottom: 8px; border-left: 4px solid #10b981; }
+        .alert-box { padding: 15px; background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; border-radius: 6px; font-weight: bold; }
+        
+        @keyframes beacon-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
     </style>
 </head>
 <body>
-    <div id="master-status-banner">DECIPHER CUE MASTER ARCHITECTURE: 25 Formats Masked & Verified across All Panels</div>
-    <div class="main-container">
 
-        <!-- PANEL 1: USER PROFILE HUB -->
-        <div class="panel-wrapper">
-            <div class="section-header">1. User Profile Hub & Interconnected Course Content Links</div>
-            <div class="section-body">
-                <div class="grid-3">
-                    <div class="card" style="text-align: center; background: white; border-top: 4px solid #0f172a;">
-                        <div style="font-size: 3rem;">👤</div>
-                        <strong>Instructor Profile Node</strong>
-                        <p style="font-size: 0.85rem; color: #64748b;">ID Instance: Admin_Node_Alpha_01</p>
-                        <div style="margin-top: 15px; background: #eff6ff; color: #2563eb; padding: 6px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">Level: System Administrator</div>
-                    </div>
-                    <div class="content-link-card">
-                        <div>
-                            <span class="ext-badge" style="background: #2563eb;">Track 1</span>
-                            <h4 style="font-weight: bold;">NIST NICE Security Mappings</h4>
-                            <p style="font-size: 0.85rem; color: #64748b; margin-top:5px;">Syllabus data loops checking firewall security parameters matching U.S. federal benchmarks.</p>
-                        </div>
-                        <div style="margin-top: 15px; background: #e0f2fe; color: #0369a1; padding: 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; text-align: center;">Connected to Classroom Window</div>
-                    </div>
-                    <div class="content-link-card">
-                        <div>
-                            <span class="ext-badge" style="background: #2563eb;">Track 2</span>
-                            <h4 style="font-weight: bold;">FAA Part 147 Airframe Blueprints</h4>
-                            <p style="font-size: 0.85rem; color: #64748b; margin-top:5px;">Aviation engine schematics, mechanical instruction logs, and structural thermodynamic hour matrices.</p>
-                        </div>
-                        <div style="margin-top: 15px; background: #e0f2fe; color: #0369a1; padding: 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; text-align: center;">Connected to Classroom Window</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Persistent Header Block -->
+    <div id="master-status-banner">MASTER CORE PROTOCOL ONLINE: Top Navigation Wrap Engine Deployed. All 10 Workspace Tabs Unlocked.</div>
 
-        <!-- PANEL 2: SECURE FILE CABINET HUB WITH ALL 25 MASKED CHANNELS -->
-        <div class="panel-wrapper">
-            <div class="section-header">2. Secure Multi-Tenant Local File Cabinet Module</div>
-            <div class="section-body">
-                <p style="color: #6b7280; font-size: 0.95rem;">System repository index verified for documents, audio, video, packages, and secure database layers across all **25 explicit extension rules**:</p>
-                <div class="grid-5">
-                    <!-- Standard Unblocked Media Extensions (Group 1) -->
-                    <div class="ext-box"><span class="ext-badge" style="background:#2563eb;">[PDF]</span><div style="font-size:0.75rem; color:#64748b;">welding_guide</div></div>
-                    <div class="ext-box"><span class="ext-badge" style="background:#2563eb;">[TXT]</span><div style="font-size:0.75rem; color:#64748b;">lecture_notes</div></div>
-                    <div class="ext-box"><span class="ext-badge" style="background:#2563eb;">[DOC]</span><div style="font-size:0.75rem; color:#64748b;">incident_rep</div></div>
-                    <div class="ext-box"><span class="ext-badge" style="background:#06b6d4;">[XLSX]</span><div style="font-size:0.75rem; color:#64748b;">attendance</div></div>
-                    <div class="ext-box"><span class="ext-badge" style="background:#2563eb;">[PPTX]</span><div style="font-size:0.75rem; color:#64748b;">alignment_brf</div></div>
-                    <div class="ext-box"><span class="ext-badge" style="background:#ec4899;">[JPEG]</span><div style="font-size:0.75rem; color:#64748b;">whiteboard_sn</div></div>
-                    <div class="ext-box"><span class="ext-badge" style="background:#ec4899;">[PNG]</span><div style="font-size:0.75rem; color:#64748b;">terminal_cap</div></div>
-                    <div class="ext-box"><span class="ext-badge" style="background:#ec4899;">[GIF]</span><div style="font-size:0.75rem; color:#64748b;">kinder_num</div></div>
-                    <div class="ext-box"><span class="ext-badge" style="background:#ec4899;">[SVG]</span><div style="font-size:0.75rem; color:#64748b;">blueprint_mtx</div></div>
-                    <div class="ext-box"><span class="ext-badge" style="background:#eab308;">[MP3]</span><div style="font-size:0.75rem; color:#64748b;">classroom_aud</div></div>
-                    <div class="ext-box"><span class="ext-badge" style="background:#eab308;">[WAV]</span><div style="font-size:0.75rem; color:#64748b;">voip_mic_str</div></div>
-                    <div class="ext-box"><span class="ext-badge" style="background:#eab308;">[FLAC]</span><div style="font-size:0.75rem; color:#64748b;">hi_fi_archive</div></div>
-                    <div class="ext-box"><span class="ext-badge" style="background:#8b5cf6;">[MP4]</span><div style="font-size:0.75rem; color:#64748b;">thermo_video</div></div>
-                    <div class="ext-box"><span class="ext-badge" style="background:#8b5cf6;">[MOV]</span><div style="font-size:0.75rem; color:#64748b;">rivet_mechanic</div></div>
-                    <div class="ext-box"><span class="ext-badge" style="background:#8b5cf6;">[AVI]</span><div style="font-size:0.75rem; color:#64748b;">infiltration</div></div>
+    <!-- Top Horizontal Navigation Controls Bar - Modified with automatic multi-row wrapping -->
+    <div class="top-nav-bar">
+        <div class="sidebar-title">Decipher Cue</div>
+        <button class="tab-btn active" onclick="switchMainTab('panel-profile', this)">User Profile Hub</button>
+        <button class="tab-btn" onclick="switchMainTab('panel-cabinet', this)">🔒 Local File Cabinet</button>
+        <button class="tab-btn" onclick="switchMainTab('panel-education', this)">Education Corner</button>
+        <button class="tab-btn" onclick="switchMainTab('panel-booking', this)">Online Booking</button>
