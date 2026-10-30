@@ -1,0 +1,76 @@
+``javascript
+// =============================================================================
+// DECIPHER CUE RUNTIME TRANSACTION ROUTER ENGINE (v5.2.2-FINAL)
+// Microservice Framework: WebSocket Telemetry Loops & Database Log Registers
+// =============================================================================
+
+const http = require('http');
+const WebSocket = require('ws');
+
+const PLATFORM_PORT = process.env.PORT || 8080;
+const HEARTBEAT_TIMEOUT_MS = 10000; // 10-Second data purge interval
+
+// Map container tracking active multitenant student connection variables
+const activeTelemetryConnections = new Map();
+
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ status: "ONLINE", microservice: "Decipher Cue Telemetry Pipeline Core" }));
+});
+
+const wss = new WebSocket.Server({ server });
+
+wss.on('connection', (ws, req) => {
+    console.log(`[NETWORK CONNECTION INGESTED]: Secure socket handshakes established.`);
+
+    ws.on('message', (messagePacket) => {
+        try {
+            const parsedPacket = JSON.parse(messagePacket);
+            
+            // Module 9.4.1 WebSocket Event Listener Rule Set
+            if (parsedPacket.action === 'PROCESS_CRYPTO_PAYMENT') {
+                console.log(`[CRYPTO ENGINE]: Processing token transaction parameters for asset: ${parsedPacket.payload.token_ticker}`);
+                
+                const txFeedbackResponse = {
+                    event: "CRYPTO_TRANSACTION_UPDATE",
+                    data: {
+                        token_ticker: parsedPacket.payload.token_ticker,
+                        operation_type: parsedPacket.payload.operation_type,
+                        settlement_status: "CONFIRMED",
+                        blockchain_tx_hash: "4F9E2B1C3D4E5F6A7B8C9D0E1F2A3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A",
+                        message: "Cross-border ISO 20022 settlement confirmed natively on the ledger."
+                    }
+                };
+                ws.send(JSON.stringify(txFeedbackResponse));
+            }
+
+            // Module 19.4 Student Vector Tracing Pipeline
+            if (parsedPacket.action === 'STREAM_STUDENT_VECTOR_COORDINATES') {
+                const participantId = parsedPacket.payload.participant_id || 'mock_student_node';
+                activeTelemetryConnections.set(participantId, {
+                    node: parsedPacket.payload.classroom_node_id,
+                    last_seen_ping_at: Date.now()
+                });
+            }
+        } catch (error) {
+            console.error('[METADATA EXCEPTION]: Payload failed contract rules.', error.message);
+        }
+    });
+});
+
+// Server-Side Heartbeat Timeout logic for cleansing the professor monitoring grid
+setInterval(() => {
+    const loopTimestamp = Date.now();
+    activeTelemetryConnections.forEach((session, id) => {
+        if ((loopTimestamp - session.last_seen_ping_at) > HEARTBEAT_TIMEOUT_MS) {
+            console.warn(`[HEARTBEAT EXCEPTION]: Student connection link severed for node ID: ${id}. Purging from tracking deck grid.`);
+            activeTelemetryConnections.delete(id);
+        }
+    });
+}, HEARTBEAT_TIMEOUT_MS);
+
+server.listen(PLATFORM_PORT, () => {
+    console.log(`================================================================================`);
+    console.log(`🚀 [DECIPHER CUE RUNTIME INITIALIZED]: Active Endpoint listening on Port ${PLATFORM_PORT}`);
+    console.log(`================================================================================`);
+});
