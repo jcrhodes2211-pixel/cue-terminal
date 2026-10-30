@@ -7,69 +7,71 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
         body { background: #f1f5f9; color: #1e293b; min-height: 100vh; overflow-y: scroll; padding: 40px 20px; }
-        .main-container { max-width: 1200px; margin: auto; display: flex; flex-direction: column; gap: 35px; }
-        .panel-wrapper { background: white; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
+        .main-container { max-width: 1200px; margin: auto; display: flex; flex-direction: column; gap: 35px; width: 100%; }
+        .panel-wrapper { background: white; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); width: 100%; }
         .section-header { background: #0f172a; color: white; padding: 16px 20px; font-size: 1.25rem; font-weight: bold; }
-        .section-body { padding: 25px; display: flex; flex-direction: column; gap: 20px; }
+        .section-body { padding: 25px; display: flex; flex-direction: column; gap: 20px; width: 100%; }
         .card { background: #f8fafc; padding: 20px; border-radius: 6px; border: 1px solid #e2e8f0; width: 100%; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-        .ext-box { background: #f8fafc; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; text-align: center; }
-        .ext-group-title { font-weight: bold; font-size: 0.9rem; color: #0f172a; margin-bottom: 6px; display: block; border-bottom: 2px solid #e2e8f0; padding-bottom: 4px; }
-        .ext-list { font-size: 0.8rem; color: #475569; font-family: monospace; line-height: 1.5; }
-        .msg-panel { padding: 15px; border-radius: 6px; background: white; border: 1px solid #cbd5e1; display: flex; flex-direction: column; gap: 8px; }
-        .msg-bubble { padding: 8px 12px; border-radius: 8px; max-width: 85%; font-size: 0.88rem; }
-        .msg-received { background: #f1f5f9; align-self: flex-start; border-left: 3px solid #64748b; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; width: 100%; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; width: 100%; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; width: 100%; }
+        .form-control { padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; color: #334155; background: white; width: 100%; }
+        .ext-box { background: #f8fafc; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; text-align: center; width: 100%; }
+        .ext-group-title { font-weight: bold; font-size: 0.9rem; color: #0f172a; margin-bottom: 8px; display: block; border-bottom: 2px solid #e2e8f0; padding-bottom: 4px; }
+        .ext-list { font-size: 0.85rem; color: #475569; font-family: monospace; line-height: 1.6; }
+        .msg-panel { padding: 20px; border-radius: 6px; background: white; border: 1px solid #cbd5e1; display: flex; flex-direction: column; gap: 10px; width: 100%; }
+        .msg-bubble { padding: 10px 14px; border-radius: 8px; max-width: 80%; font-size: 0.9rem; }
+        .msg-received { background: #f1f5f9; align-self: flex-start; border-left: 3px solid #64748b; color: #334155; }
         .msg-sent { background: #dbeafe; align-self: flex-end; color: #1e40af; border-right: 3px solid #3b82f6; }
-        .schedule-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
-        .slot-static { background: white; border: 1px solid #cbd5e1; padding: 12px; border-radius: 6px; text-align: center; border-top: 3px solid #10b981; display: flex; flex-direction: column; gap: 2px; font-size: 0.85rem; }
+        .schedule-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 15px; width: 100%; }
+        .slot-static { background: white; border: 1px solid #cbd5e1; padding: 15px; border-radius: 6px; text-align: center; border-top: 3px solid #10b981; display: flex; flex-direction: column; gap: 4px; width: 100%; }
         .back-link { color: #2563eb; text-decoration: none; font-weight: bold; font-size: 0.95rem; margin-bottom: 10px; display: inline-block; }
-        .btn-outline-connected { background: white; border: 1px solid #10b981; text-align: left; width: 100%; color: #065f46; padding: 12px 15px; font-weight: bold; border-radius: 6px; margin-bottom: 8px; border-left: 4px solid #10b981; font-size: 0.85rem; }
+        .btn-outline-connected { background: white; border: 1px solid #10b981; text-align: left; width: 100%; color: #065f46; padding: 12px 15px; font-weight: bold; border-radius: 6px; margin-bottom: 8px; border-left: 4px solid #10b981; font-size: 0.9rem; }
         .alert-box { padding: 15px; background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; border-radius: 6px; font-weight: bold; width: 100%; }
-        .kids-corner-banner { background: #fffbeb; border-left: 5px solid #f59e0b; padding: 20px; border-radius: 6px; font-size: 0.88rem; }
-        .content-link-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; border-top: 4px solid #2563eb; }
-        .canvas-container-mock { border: 2px dashed #cbd5e1; border-radius: 6px; padding: 30px; text-align: center; background: #f8fafc; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+        .content-link-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; border-top: 4px solid #2563eb; width: 100%; }
+        .kids-corner-banner { background: #fffbeb; border-left: 5px solid #f59e0b; padding: 20px; border-radius: 6px; width: 100%; }
+        .canvas-container-mock { border: 2px dashed #cbd5e1; border-radius: 6px; padding: 30px; text-align: center; background: #f8fafc; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; width: 100%; }
     </style>
 </head>
 <body>
     <div class="main-container">
         <a href="index.html" class="back-link">⬅ Return to Main Command Gateway</a>
 
-        <!-- PANEL 1: USER PROFILE HUB -->
+        <!-- 1. USER PROFILE HUB -->
         <div class="panel-wrapper">
             <div class="section-header">1. User Profile Hub & Interconnected Course Content Links</div>
             <div class="section-body">
                 <div class="grid-3">
                     <div class="card" style="text-align: center; background: white; border-top: 4px solid #0f172a;">
-                        <div style="font-size: 2.5rem;">👤</div>
+                        <div style="font-size: 3rem;">👤</div>
                         <strong>Instructor Profile Node</strong>
-                        <p style="font-size: 0.8rem; color: #64748b;">ID Instance: Admin_Node_Alpha_01</p>
-                        <div style="margin-top: 10px; background: #eff6ff; color: #2563eb; padding: 4px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Level: System Administrator</div>
+                        <p style="font-size: 0.85rem; color: #64748b;">ID Instance: Admin_Node_Alpha_01</p>
+                        <div style="margin-top: 15px; background: #eff6ff; color: #2563eb; padding: 6px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">Level: System Administrator</div>
                     </div>
                     <div class="content-link-card">
                         <div>
-                            <span style="display:inline-block; padding:2px 6px; background:#2563eb; color:white; border-radius:4px; font-size:0.7rem; font-weight:bold;">Track A</span>
-                            <h4 style="margin-top:4px; font-weight: bold;">NIST NICE Security Mappings</h4>
-                            <p style="font-size: 0.8rem; color: #64748b; margin-top:5px;">Syllabus check tracking data matching federal benchmarks.</p>
+                            <span style="display:inline-block; padding:2px 6px; background:#2563eb; color:white; border-radius:4px; font-size:0.75rem; font-weight:bold; font-family:monospace;">Track A</span>
+                            <h4 style="margin-top:6px; font-weight: bold;">NIST NICE Security Mappings</h4>
+                            <p style="font-size: 0.85rem; color: #64748b; margin-top:5px;">Syllabus data loops checking firewall security parameters matching U.S. federal benchmarks.</p>
                         </div>
                     </div>
                     <div class="content-link-card">
                         <div>
-                            <span style="display:inline-block; padding:2px 6px; background:#2563eb; color:white; border-radius:4px; font-size:0.7rem; font-weight:bold;">Track B</span>
+                            <span style="display:inline-block; padding:2px 6px; background:#2563eb; color:white; border-radius:4px; font-size:0.75rem; font-weight:bold; font-family:monospace;">Track B</span>
                             <h4 style="margin-top:4px; font-weight: bold;">FAA Part 147 Airframe Blueprints</h4>
-                            <p style="font-size: 0.8rem; color: #64748b; margin-top:5px;">Aviation engine schematics and structural thermodynamic hour matrices.</p>
+                            <p style="font-size: 0.85rem; color: #64748b; margin-top:5px;">Aviation engine schematics, mechanical instruction logs, and structural thermodynamic hour matrices.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PANEL 2: FILE CABINET REPOSITORY WITH ALL 25 SUITE LABELS -->
+        <!-- 2. SECURE MULTI-TENANT LOCAL FILE CABINET -->
         <div class="panel-wrapper">
             <div class="section-header">2. Secure Multi-Tenant Local File Cabinet Module</div>
             <div class="section-body">
-                <p style="color: #6b7280; font-size: 0.9rem;">System repository index verified for document, multi-media tracks, and security envelopes across all **25 explicit extension rules**:</p>
+                <p style="color: #6b7280; font-size: 0.95rem;">System repository index verified for documents, text nodes, multi-media tracks, and security database layers across all **25 explicit extension rules**:</p>
                 <div class="grid-4">
                     <div class="ext-box">
                         <span class="ext-group-title">🗂️ Documents & Text</span>
@@ -88,37 +90,32 @@
                         <div class="ext-list">• MP3 Audio<br>• WAV Microphone<br>• FLAC Archive</div>
                     </div>
                 </div>
-                <div class="grid-3" style="margin-top: -10px;">
+                <div class="grid-3">
                     <div class="ext-box">
                         <span class="ext-group-title">🎬 Video Containers</span>
                         <div class="ext-list">• MP4 Presentation<br>• MOV Mechanics<br>• AVI Record</div>
                     </div>
                     <div class="ext-box">
-                        <span class="ext-group-title">📦 Packages</span>
+                        <span class="ext-group-title">📦 Compressed Packages</span>
                         <div class="ext-list">• ZIP Backup<br>• RAR Historical</div>
                     </div>
                     <div class="ext-box">
-                        <span class="ext-group-title">⚙️ Code & Core Engine</span>
-                        <div class="ext-list">• C Sniffer Logic • HTML Tenant View<br>• SYS Kernel Environment • DLL Codec Engine<br>• INI Workspace Configurations</div>
+                        <span class="ext-group-title">⚙️ Code & Core Engine Suite</span>
+                        <div class="ext-list">• C Sniffer Logic<br>• HTML Tenant View<br>• SYS Kernel System<br>• DLL Codec Engine<br>• INI Configuration</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PANEL 3: EDUCATION CORNER & MONITORING GRID -->
+        <!-- 3. EDUCATION CORNER & MONITORING GRID -->
         <div class="panel-wrapper">
             <div class="section-header">3. Education Corner: Audio-Visual Classroom Center & Live Monitoring Deck</div>
             <div class="section-body">
-                <div style="background: #111827; padding: 12px; border-radius: 6px; color: #ef4444; font-family: monospace; font-size: 0.85rem; font-weight: bold; margin-bottom: 15px;">
+                <div style="background: #111827; padding: 12px; border-radius: 6px; color: #ef4444; font-family: monospace; font-size: 0.85rem; font-weight: bold; width: 100%;">
                     ● RECORDING MEDIA STREAM LIVE CLASSROOM SESSION ACTIVE (MODULE 3.2.3.r)
                 </div>
                 <div class="grid-2">
                     <div class="card" style="background: #1e293b; color: white; text-align: center; padding: 25px;">
-                        <span style="font-size: 0.75rem; background: #ef4444; padding: 3px 6px; border-radius: 4px; font-weight: bold;">● SCREEN SHARE ACTIVE</span>
+                        <span style="font-size: 0.75rem; background: #ef4444; padding: 3px 6px; border-radius: 4px; font-weight: bold;">● SCREEN SHARE REVIEW ACTIVE</span>
                         <div style="font-size: 2rem; margin: 8px 0;">🖥️</div>
                         <strong>Presentation Surface Layer</strong>
-                        <p style="color: #94a3b8; font-size: 0.8rem; margin-top: 4px;">Streaming target file asset parameters matching core validation rules cleanly.</p>
-                    </div>
-                    <div class="voip-status-badge" style="background: #334155; color: white; border-radius: 6px; padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;">
-                        <div style="font-size: 1.8rem;">👨‍🏫</div>
-                        <strong>Instructor Audio Link</strong>
